@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TAHWUL Dashboard - Next.js Implementation
 
-## Getting Started
+A comprehensive dashboard and detail view implementation for digital transformation tracking and compliance management.
 
-First, run the development server:
+## Features
 
+### Dashboard (Home Page)
+- Project timeline visualization with status indicators
+- Summary statistics cards with key metrics
+- Progress status breakdown by perspectives
+- 12-month performance chart
+- Overall compliance score gauge
+- Top performing perspective leaders
+- Recent activities feed
+- Audit readiness widget
+
+### Perspectives Detail Page
+- Header with category, title, and progress indicator
+- Evidence summary cards (Total, Under Review, In Progress, Completed)
+- Tab navigation (Overview, Evidence)
+- Structured content sections (Objective, Requirements, Scope)
+- Leaders/owners display
+- Evidence documents table with filtering
+- Comments section
+- Recent activities panel
+
+### Tracking Screen
+- Summary metrics dashboard
+- Advanced filtering and search
+- Comprehensive tracking table with progress indicators
+- Team overview panel
+- Upcoming deadlines
+- Risk alerts
+
+## Tech Stack
+
+- Framework: Next.js 16
+- Styling: Tailwind CSS
+- Charts: Recharts
+- Icons: Lucide React
+- Language: JavaScript (JSX)
+
+## Installation
+
+1. Install dependencies:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Run the development server:
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Open http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Structure
 
-## Learn More
+```
+├── app/
+│   └── globals.css          # Global styles with custom CSS
+├── components/
+│   ├── Layout.jsx           # Main layout wrapper
+│   ├── Sidebar.jsx          # Navigation sidebar
+│   ├── Header.jsx           # Top header with search and user menu
+│   ├── StatCard.jsx         # Summary statistics card
+│   ├── Timeline.jsx         # Project timeline component
+│   ├── ProgressCard.jsx     # Progress status card
+│   ├── PerformanceChart.jsx # Bar chart for performance
+│   ├── ComplianceScore.jsx  # Circular gauge for compliance
+│   ├── TopPerformers.jsx    # Top performers list
+│   ├── RecentActivities.jsx # Activity feed
+│   └── AuditReadiness.jsx   # Audit readiness widget
+├── lib/
+│   └── mockData.js          # Mock data for all components
+├── pages/
+│   ├── _app.jsx             # Next.js app wrapper
+│   ├── index.jsx            # Dashboard page
+│   ├── perspectives.jsx     # Perspectives detail page
+│   ├── tracking.jsx         # Tracking screen
+│   ├── tasks.jsx            # Placeholder page
+│   ├── documents.jsx        # Placeholder page
+│   ├── reports.jsx          # Placeholder page
+│   └── users.jsx            # Placeholder page
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+└── next.config.js
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Pages
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- / - Dashboard with all widgets and overview
+- /perspectives - Strategic planning detail view
+- /tracking - Criteria tracking dashboard
+- /tasks - Tasks (placeholder)
+- /documents - Documents (placeholder)
+- /reports - Reports (placeholder)
+- /users - Users and Roles (placeholder)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Customization
 
-## Deploy on Vercel
+### Colors
+Edit the color scheme in `tailwind.config.js`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Fonts
+Inter and Sora are imported in `app/globals.css`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Data
+All mock data is in `lib/mockData.js`.
+
+## License
+
+This project is for demonstration purposes.
+# tahwultask
