@@ -37,7 +37,7 @@ npm start
   - Evidence table + comments + recent activities (Evidence tab only)
 
 - **Other routes**
-  - `tracking`, `tasks`, `documents`, `reports`, `users` are currently “coming soon” placeholders to keep navigation stable.
+  - `tasks`, `documents`, `reports`, `users` are currently “coming soon” placeholders to keep navigation stable.
 
 ## How It’s Built (Engineering Notes)
 
