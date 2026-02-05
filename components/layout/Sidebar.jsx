@@ -16,28 +16,20 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-primary min-h-screen fixed left-0 top-0 text-white flex flex-col">
+    <aside className="w-20 sm:w-56 lg:w-64 bg-primary min-h-screen fixed left-0 top-0 text-white flex flex-col">
       {/* Logo */}
-      <div className="p-6 border-b border-primary-light relative" style={{ height: '60px' }}>
-        <Image 
-          src="/Tahwul.png" 
-          alt="TAHWUL Logo" 
-          width={100} 
+      <div className="h-16 px-3 sm:px-6 border-b border-primary-light flex items-center justify-center sm:justify-start">
+        <Image
+          src="/Tahwul.png"
+          alt="TAHWUL Logo"
+          width={100}
           height={40}
-          style={{ 
-            width: '100px', 
-            height: '40px',
-            position: 'absolute',
-            top: '10px',
-            left: '23px',
-            opacity: 1,
-            transform: 'rotate(0deg)'
-          }}
+          className="w-10 h-10 sm:w-[100px] sm:h-[40px]"
         />
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-6 space-y-1">
+      <nav className="flex-1 px-2 sm:px-3 py-6 space-y-1">
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
           
@@ -46,7 +38,7 @@ export default function Sidebar() {
               key={item.href}
               href={item.href}
               className={`
-                flex items-center space-x-3 px-4 py-3 rounded-lg
+                flex items-center justify-center sm:justify-start gap-0 sm:gap-3 px-3 sm:px-4 py-3 rounded-lg
                 transition-all duration-200 group
                 ${isActive 
                   ? 'sidebar-link-active sidebar-link-bg shadow-lg' 
@@ -65,7 +57,7 @@ export default function Sidebar() {
                 `}
               />
               <span
-                className={`typo-sidebar-14 ${
+                className={`hidden sm:inline typo-sidebar-14 ${
                   isActive ? 'sidebar-link-active' : 'sidebar-link'
                 }`}
               >
@@ -78,7 +70,7 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div className="p-4 border-t border-primary-light">
-        <div className="typo-meta-12 text-center">
+        <div className="hidden sm:block typo-meta-12 text-center">
           © 2026 TAHWUL System
         </div>
       </div>

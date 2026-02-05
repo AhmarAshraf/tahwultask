@@ -27,7 +27,7 @@ export default function Perspectives() {
           >
             <img src="/icons/back.png" alt="Back" className="w-4 h-4" />
           </Link>
-          <span className="typo-table-cell-medium-14">
+          <span className="typo-breadcrumb-16">
             Digital Transformation Strategic Planning
           </span>
         </div>

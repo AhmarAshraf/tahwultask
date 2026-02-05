@@ -6,7 +6,7 @@ export default function Layout({ children }) {
     <div className="min-h-screen bg-[#F7F9FC]">
       <Sidebar />
       <Header />
-      <main className="ml-64 pt-16 min-h-screen bg-[#F7F9FC]">
+      <main className="ml-20 sm:ml-56 lg:ml-64 pt-16 min-h-screen bg-[#F7F9FC]">
         <div className="p-6">
           {children}
         </div>

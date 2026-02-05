@@ -13,7 +13,7 @@ export default function Timeline({ data }) {
             <option>2025</option>
           </select>
           <svg
-            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500"
+            className="pointer-events-none absolute right-1 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500"
             viewBox="0 0 20 20"
             fill="none"
             stroke="currentColor"
@@ -24,9 +24,9 @@ export default function Timeline({ data }) {
         </div>
       </div>
 
-      <div className="relative px-6">
+      <div className="relative">
         {/* Track row */}
-        <div className="relative h-12 w-[1103.94px] max-w-full mx-auto">
+        <div className="relative h-12 w-full">
           <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-[16px] rounded-[10px] bg-[#F5F8FB]"></div>
           <div className="absolute top-1/2 -translate-y-1/2 left-0 h-[16px] w-full rounded-[10px]">
             <div
@@ -52,13 +52,13 @@ export default function Timeline({ data }) {
         </div>
 
         {/* Labels */}
-        <div className="mt-4 flex justify-between w-[1103.94px] max-w-full mx-auto">
+        <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-y-3 text-center">
           {data.map((item) => (
-            <div key={`${item.id}-label`} className="text-center px-3" style={{ flex: 1 }}>
-              <p className="typo-date-14 mb-1 whitespace-nowrap">
+            <div key={`${item.id}-label`} className="px-2">
+              <p className="typo-date-14 mb-1">
                 {item.date}
               </p>
-              <p className="typo-subtitle-14 whitespace-nowrap">
+              <p className="typo-subtitle-14">
                 {item.title}
               </p>
             </div>

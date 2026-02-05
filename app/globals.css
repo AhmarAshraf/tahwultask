@@ -162,6 +162,10 @@ a {
   @apply text-[16px] font-bold leading-4 text-gray-900 capitalize;
 }
 
+.typo-breadcrumb-16 {
+  @apply text-[16px] font-normal leading-4 text-[#1D3557] capitalize;
+}
+
 .typo-date-14 {
   @apply text-[14px] font-normal leading-4 text-gray-500 capitalize;
 }
