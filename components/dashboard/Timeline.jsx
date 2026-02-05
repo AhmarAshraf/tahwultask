@@ -8,7 +8,7 @@ export default function Timeline({ data }) {
       <div className="flex items-center justify-between mb-8">
         <h3 className="typo-heading-16">Project Timeline</h3>
         <div className="relative">
-          <select className="text-sm border border-gray-300 rounded-lg pl-4 pr-10 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 appearance-none">
+        <select className="typo-table-cell-14 border border-gray-300 rounded-lg pl-4 pr-10 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 appearance-none">
             <option>2026</option>
             <option>2025</option>
           </select>

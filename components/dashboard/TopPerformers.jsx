@@ -1,7 +1,7 @@
-export default function ç({ performers }) {
+export default function TopPerformers({ performers }) {
   return (
     <div className="bg-white rounded-xl p-6 card-shadow">
-      <h2 className="text-lg font-bold text-gray-900 mb-4">Top Performing Perspective Leaders</h2>
+      <h2 className="typo-section-18 mb-4">Top Performing Perspective Leaders</h2>
 
       <div className="mt-4 space-y-4">
         {performers.map((performer, index) => (
@@ -18,7 +18,7 @@ export default function ç({ performers }) {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-[#1E2A44] text-sm">
+                  <div className="w-full h-full flex items-center justify-center typo-avatar-initials-14">
                     {performer.name.charAt(0)}
                   </div>
                 )}

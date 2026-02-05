@@ -1,14 +1,14 @@
 'use client';
 
-import Layout from '../components/Layout';
-import StatCard from '../components/StatCard';
-import Timeline from '../components/Timeline';
-import ProgressCard from '../components/ProgressCard';
-import PerformanceChart from '../components/PerformanceChart';
-import ComplianceScore from '../components/ComplianceScore';
-import TopPerformers from '../components/TopPerformers';
-import RecentActivities from '../components/RecentActivities';
-import AuditReadiness from '../components/AuditReadiness';
+import Layout from '../components/layout/Layout';
+import StatCard from '../components/dashboard/StatCard';
+import Timeline from '../components/dashboard/Timeline';
+import ProgressStatusSection from '../components/dashboard/ProgressStatusSection';
+import PerformanceChart from '../components/dashboard/PerformanceChart';
+import ComplianceScore from '../components/dashboard/ComplianceScore';
+import TopPerformers from '../components/dashboard/TopPerformers';
+import RecentActivities from '../components/dashboard/RecentActivities';
+import AuditReadiness from '../components/dashboard/AuditReadiness';
 
 import {
   summaryStats,
@@ -37,44 +37,7 @@ export default function Dashboard() {
         </div>
 
 
-        {/* Progress Status */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-4">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold text-gray-900">Progress Status</h2>
-            <div className="flex items-center space-x-4 text-[12px]">
-              <div className="flex items-center space-x-2">
-                <div className="w-2.5 h-2.5 bg-gray-400 rounded-full"></div>
-                <span className="text-gray-600">Not Started</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2.5 h-2.5 bg-orange-500 rounded-full"></div>
-                <span className="text-gray-600">In Progress</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
-                <span className="text-gray-600">Completed</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2.5 h-2.5 bg-[#1E3A5F] rounded-full"></div>
-                <span className="text-gray-600">Partially Uploaded</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2.5 h-2.5 bg-blue-600 rounded-full"></div>
-                <span className="text-gray-600">Fully Uploaded</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2.5 h-2.5 bg-red-500 rounded-full"></div>
-                <span className="text-gray-600">Delayed</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-10 gap-4">
-            {progressStatus.map((item) => (
-              <ProgressCard key={item.id} item={item} />
-            ))}
-          </div>
-        </div>
+        <ProgressStatusSection items={progressStatus} />
 
         {/* Upper Row */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

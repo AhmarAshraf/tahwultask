@@ -39,9 +39,9 @@ export default function ProgressCard({ item }) {
     <div className="bg-white border border-gray-200 rounded-xl p-3">
       {/* Header pill */}
       <div className="bg-primary rounded-lg px-3 py-3 text-white text-center shadow-sm">
-        <p className="text-[12px] font-bold leading-4 text-center capitalize">{item.name}</p>
+        <p className="typo-progress-title-12 text-white">{item.name}</p>
         <div className="mt-2 inline-flex items-center justify-center rounded-full bg-[#2B4064] px-3 py-1">
-          <span className="text-[12px] font-bold leading-4">{formatPercent(item.progress)}</span>
+          <span className="typo-progress-percent-12 text-white">{formatPercent(item.progress)}</span>
         </div>
       </div>
 
@@ -49,14 +49,14 @@ export default function ProgressCard({ item }) {
       <div className="mt-3 space-y-3">
         {item.subItems.map((subItem, index) => (
           <div key={index} className="bg-[#F7FAFC] border border-[#E4EAF2] rounded-lg px-3 py-2">
-            <p className="text-[10px] font-normal leading-4 text-center capitalize text-[#6B7A90] mb-2">
+            <p className="typo-progress-subtitle-10 mb-2">
               {subItem.name}
             </p>
             <div className="flex flex-wrap gap-2 justify-center">
               {normalizeSteps(subItem).map((step) => (
                 <div
                   key={step.number}
-                  className={`w-6 h-6 rounded-full flex items-center justify-center text-[12px] font-bold leading-4 ${
+                  className={`w-6 h-6 rounded-full flex items-center justify-center typo-progress-step-12 ${
                     statusStyles[step.status] || statusStyles['not-started']
                   }`}
                 >

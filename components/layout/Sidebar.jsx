@@ -1,16 +1,15 @@
-import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 const menuItems = [
-  { iconSrc: '/icons/ic_home.png', label: 'Dashboard', href: '/' },
-  { iconSrc: '/icons/ic_medical.png', label: 'Perspectives', href: '/perspectives' },
-  { iconSrc: '/icons/ic_chart_bar_ine.png', label: 'Tracking', href: '/tracking' },
-  { iconSrc: '/icons/ic_profile.png', label: 'Tasks', href: '/tasks' },
-  { iconSrc: '/icons/ic_file.png', label: 'Documents', href: '/documents' },
-  { iconSrc: '/icons/ic_chart_bar_ine.png', label: 'Reports', href: '/reports' },
-  { iconSrc: '/icons/ic_user_multiple.png', label: 'Users & Roles', href: '/users' },
+  { iconSrc: '/icons/home.png', label: 'Dashboard', href: '/' },
+  { iconSrc: '/icons/file.png', label: 'Perspectives', href: '/perspectives' },
+  { iconSrc: '/icons/chart_bar_ine.png', label: 'Tracking', href: '/tracking' },
+  { iconSrc: '/icons/profile.png', label: 'Tasks', href: '/tasks' },
+  { iconSrc: '/icons/file.png', label: 'Documents', href: '/documents' },
+  { iconSrc: '/icons/chart_bar_ine.png', label: 'Reports', href: '/reports' },
+  { iconSrc: '/icons/user_multiple.png', label: 'Users & Roles', href: '/users' },
 ];
 
 export default function Sidebar() {
@@ -50,8 +49,8 @@ export default function Sidebar() {
                 flex items-center space-x-3 px-4 py-3 rounded-lg
                 transition-all duration-200 group
                 ${isActive 
-                  ? 'bg-primary-light text-white shadow-lg' 
-                  : 'text-gray-300 hover:bg-primary-light hover:text-white'
+                  ? 'sidebar-link-active sidebar-link-bg shadow-lg' 
+                  : 'sidebar-link hover:bg-primary-light hover:text-white'
                 }
               `}
             >
@@ -62,10 +61,16 @@ export default function Sidebar() {
                 height={20}
                 className={`
                   transition-transform duration-200
-                  ${isActive ? 'scale-110' : 'group-hover:scale-110'}
+                  ${isActive ? 'scale-110 sidebar-icon-active' : 'sidebar-icon group-hover:scale-110'}
                 `}
               />
-              <span className="font-medium text-sm">{item.label}</span>
+              <span
+                className={`typo-sidebar-14 ${
+                  isActive ? 'sidebar-link-active' : 'sidebar-link'
+                }`}
+              >
+                {item.label}
+              </span>
             </Link>
           );
         })}
@@ -73,7 +78,7 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div className="p-4 border-t border-primary-light">
-        <div className="text-xs text-gray-400 text-center">
+        <div className="typo-meta-12 text-center">
           © 2026 TAHWUL System
         </div>
       </div>

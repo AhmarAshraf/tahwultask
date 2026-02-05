@@ -1,6 +1,6 @@
 'use client';
 
-import Layout from '../components/Layout';
+import Layout from '../components/layout/Layout';
 import { CheckSquare } from 'lucide-react';
 
 export default function Tasks() {

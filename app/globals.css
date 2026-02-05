@@ -15,6 +15,9 @@
   --color-background: #f8fafc;
   --color-surface: #ffffff;
   --color-border: #e2e8f0;
+  --sidebar-text: #8fa3bf;
+  --sidebar-text-active: #ffffff;
+  --sidebar-bg-active: #2d4f7c;
 }
 
 * {
@@ -183,6 +186,173 @@ a {
   @apply text-[14px] font-normal leading-4 text-gray-500 capitalize;
 }
 
+.typo-docname-14 {
+  @apply text-[14px] font-normal leading-5 text-gray-900 capitalize;
+}
+
 .typo-score-14 {
   @apply text-[14px] font-bold leading-4 text-gray-900 capitalize;
+}
+
+.typo-summary-value-20 {
+  @apply text-[20px] font-bold leading-none text-gray-900 capitalize;
+}
+
+.typo-summary-label-14 {
+  @apply text-[14px] font-medium leading-4 text-gray-500 capitalize;
+}
+
+.typo-overview-label-15 {
+  @apply text-[15px] font-medium leading-6 text-gray-700 capitalize;
+}
+
+.typo-overview-body-15 {
+  @apply text-[15px] font-normal leading-6 text-gray-700 capitalize;
+}
+
+.typo-overview-title-15 {
+  @apply text-[15px] font-normal leading-5 text-gray-900 capitalize;
+}
+
+.typo-leader-name-15 {
+  @apply text-[15px] font-medium leading-5 text-gray-900 capitalize;
+}
+
+.typo-leader-role-14 {
+  @apply text-[14px] font-normal leading-4 text-gray-500 capitalize;
+}
+
+.typo-table-head-14 {
+  @apply text-[14px] font-semibold leading-4 text-gray-700 capitalize;
+}
+
+.typo-table-cell-14 {
+  @apply text-[14px] font-normal leading-4 text-gray-900 capitalize;
+}
+
+.typo-table-cell-medium-14 {
+  @apply text-[14px] font-medium leading-4 text-gray-900 capitalize;
+}
+
+.typo-table-cell-muted-14 {
+  @apply text-[14px] font-normal leading-4 text-gray-600 capitalize;
+}
+
+.typo-table-meta-12 {
+  @apply text-[12px] font-normal leading-4 text-gray-500 capitalize;
+}
+
+.typo-comment-author-14 {
+  @apply text-[14px] font-medium leading-4 text-gray-900 capitalize;
+}
+
+.typo-comment-body-14 {
+  @apply text-[14px] font-normal leading-5 text-gray-700 capitalize;
+}
+
+.typo-comment-date-12 {
+  @apply text-[12px] font-normal leading-4 text-gray-500 capitalize;
+}
+
+.typo-activity-title-14 {
+  @apply text-[14px] font-medium leading-5 text-gray-900 capitalize;
+}
+
+.typo-activity-time-12 {
+  @apply text-[12px] font-normal leading-4 text-gray-500 capitalize;
+}
+
+.typo-section-18 {
+  @apply text-[18px] font-bold leading-5 text-gray-900 capitalize;
+}
+
+.typo-legend-12 {
+  @apply text-[12px] font-normal leading-4 text-gray-600 capitalize;
+}
+
+.typo-kpi-caption-14 {
+  @apply text-[14px] font-normal leading-4 text-gray-600 capitalize;
+}
+
+.typo-kpi-value-30 {
+  @apply text-[30px] font-bold leading-none text-gray-900 capitalize;
+}
+
+.typo-stat-value-18 {
+  @apply text-[18px] font-semibold leading-none text-gray-900 capitalize;
+}
+
+.typo-stat-label-12 {
+  @apply text-[12px] font-normal leading-4 text-gray-500 capitalize;
+}
+
+.typo-section-20 {
+  @apply text-[20px] font-bold leading-6 text-[#1E2A44] capitalize;
+}
+
+.typo-page-title-30 {
+  @apply text-[30px] font-bold leading-9 text-gray-900 capitalize;
+}
+
+.typo-progress-title-12 {
+  @apply text-[12px] font-bold leading-4 text-center capitalize;
+}
+
+.typo-progress-percent-12 {
+  @apply text-[12px] font-bold leading-4 capitalize text-white;
+}
+
+.typo-progress-subtitle-10 {
+  @apply text-[10px] font-normal leading-4 text-[#6B7A90] text-center capitalize;
+}
+
+.typo-progress-step-12 {
+  @apply text-[12px] font-bold leading-4 capitalize;
+}
+
+.typo-avatar-initials-14 {
+  @apply text-[14px] font-medium leading-4 text-[#1E2A44] uppercase;
+}
+
+.typo-button-12 {
+  @apply text-[12px] font-medium leading-4 capitalize;
+}
+
+.typo-initials-12 {
+  @apply text-[12px] font-medium leading-4 uppercase;
+}
+
+.typo-initials-14 {
+  @apply text-[14px] font-medium leading-4 uppercase;
+}
+
+.typo-pill-12 {
+  @apply text-[12px] font-medium leading-4 capitalize;
+}
+
+.typo-sidebar-14 {
+  @apply text-[14px] font-medium leading-4 capitalize;
+}
+
+/* Sidebar */
+.sidebar-link {
+  color: var(--sidebar-text);
+}
+
+.sidebar-link-active {
+  color: var(--sidebar-text-active);
+}
+
+.sidebar-link-bg {
+  background-color: var(--sidebar-bg-active);
+}
+
+.sidebar-icon {
+  filter: brightness(0) saturate(100%) invert(65%) sepia(8%) saturate(1280%)
+    hue-rotate(186deg) brightness(92%) contrast(88%);
+}
+
+.sidebar-icon-active {
+  filter: brightness(0) invert(1);
+  opacity: 1;
 }

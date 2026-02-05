@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Search, Bell, ChevronDown } from 'lucide-react';
+import { Search, ChevronDown } from 'lucide-react';
 
 export default function Header() {
   return (
@@ -20,8 +20,14 @@ export default function Header() {
         {/* Right section */}
         <div className="flex items-center space-x-4">
           {/* Notifications */}
-          <button className="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
-            <Bell className="w-5 h-5" />
+          <button className="relative p-2 rounded-lg transition-colors hover:bg-gray-100">
+            <Image
+              src="/icons/bell.png"
+              alt="Notifications"
+              width={20}
+              height={20}
+              className="w-5 h-5"
+            />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
           </button>
 
@@ -35,7 +41,7 @@ export default function Header() {
               className="w-9 h-9 rounded-full object-cover"
             />
             <div className="flex items-center space-x-2">
-              <span className="text-sm font-medium text-gray-900">Mohamed</span>
+              <span className="typo-table-cell-medium-14">Mohamed</span>
               <ChevronDown className="w-4 h-4 text-gray-400" />
             </div>
           </div>

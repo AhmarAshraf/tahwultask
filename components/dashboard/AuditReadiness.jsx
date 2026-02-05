@@ -5,7 +5,7 @@ export default function AuditReadiness({ data }) {
 
   return (
     <div className="bg-white rounded-xl p-6 card-shadow">
-      <h2 className="text-lg font-bold text-gray-900 mb-4">Audit Readiness</h2>
+      <h2 className="typo-section-18 mb-4">Audit Readiness</h2>
 
       <div className="flex flex-col items-center">
         <div className="mt-2">

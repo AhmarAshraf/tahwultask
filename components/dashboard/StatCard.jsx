@@ -5,8 +5,8 @@ export default function StatCard({ title, value, icon }) {
     <div className="bg-white border border-gray-200 rounded-xl px-4 py-3 card-shadow">
       <div className="flex items-start justify-between">
         <div className="flex-1">
-          <p className="text-[18px] font-semibold text-gray-900 leading-none">{value}</p>
-          <p className="mt-2 text-[12px] text-gray-500">{title}</p>
+      <p className="typo-stat-value-18">{value}</p>
+      <p className="mt-2 typo-stat-label-12">{title}</p>
         </div>
         {icon && (
           <div className="relative w-6 h-6">

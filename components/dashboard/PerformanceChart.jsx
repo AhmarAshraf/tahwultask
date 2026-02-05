@@ -3,7 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 export default function PerformanceChart({ data }) {
   return (
     <div className="bg-white rounded-xl p-6 card-shadow">
-      <h2 className="text-lg font-bold text-gray-900 mb-6">12-Month Performance</h2>
+      <h2 className="typo-section-18 mb-6">12-Month Performance</h2>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data}>
