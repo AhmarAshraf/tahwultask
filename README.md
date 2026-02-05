@@ -1,115 +1,77 @@
-# TAHWUL Dashboard - Next.js Implementation
+# TAHWUL Dashboard
 
-A comprehensive dashboard and detail view implementation for digital transformation tracking and compliance management.
+Frontend UI implementation for a digital transformation dashboard + “Perspective” detail screen (pixel-focused, componentized, and responsive).
 
-## Features
+**Live demo:** https://tahwultask.vercel.app/
 
-### Dashboard (Home Page)
-- Project timeline visualization with status indicators
-- Summary statistics cards with key metrics
-- Progress status breakdown by perspectives
-- 12-month performance chart
-- Overall compliance score gauge
-- Top performing perspective leaders
-- Recent activities feed
-- Audit readiness widget
+## How To Run
 
-### Perspectives Detail Page
-- Header with category, title, and progress indicator
-- Evidence summary cards (Total, Under Review, In Progress, Completed)
-- Tab navigation (Overview, Evidence)
-- Structured content sections (Objective, Requirements, Scope)
-- Leaders/owners display
-- Evidence documents table with filtering
-- Comments section
-- Recent activities panel
-
-### Tracking Screen
-- Summary metrics dashboard
-- Advanced filtering and search
-- Comprehensive tracking table with progress indicators
-- Team overview panel
-- Upcoming deadlines
-- Risk alerts
-
-## Tech Stack
-
-- Framework: Next.js 16
-- Styling: Tailwind CSS
-- Charts: Recharts
-- Icons: Lucide React
-- Language: JavaScript (JSX)
-
-## Installation
-
-1. Install dependencies:
 ```bash
 npm install
-```
-
-2. Run the development server:
-```bash
 npm run dev
 ```
 
-3. Open http://localhost:3000
+Open `http://localhost:3000`.
 
-## Project Structure
-
-```
-├── app/
-│   └── globals.css          # Global styles with custom CSS
-├── components/
-│   ├── Layout.jsx           # Main layout wrapper
-│   ├── Sidebar.jsx          # Navigation sidebar
-│   ├── Header.jsx           # Top header with search and user menu
-│   ├── StatCard.jsx         # Summary statistics card
-│   ├── Timeline.jsx         # Project timeline component
-│   ├── ProgressCard.jsx     # Progress status card
-│   ├── PerformanceChart.jsx # Bar chart for performance
-│   ├── ComplianceScore.jsx  # Circular gauge for compliance
-│   ├── TopPerformers.jsx    # Top performers list
-│   ├── RecentActivities.jsx # Activity feed
-│   └── AuditReadiness.jsx   # Audit readiness widget
-├── lib/
-│   └── mockData.js          # Mock data for all components
-├── pages/
-│   ├── _app.jsx             # Next.js app wrapper
-│   ├── index.jsx            # Dashboard page
-│   ├── perspectives.jsx     # Perspectives detail page
-│   ├── tracking.jsx         # Tracking screen
-│   ├── tasks.jsx            # Placeholder page
-│   ├── documents.jsx        # Placeholder page
-│   ├── reports.jsx          # Placeholder page
-│   └── users.jsx            # Placeholder page
-├── package.json
-├── tailwind.config.js
-├── postcss.config.js
-└── next.config.js
+Production build:
+```bash
+npm run build
+npm start
 ```
 
-## Pages
+## What’s Included
 
-- / - Dashboard with all widgets and overview
-- /perspectives - Strategic planning detail view
-- /tracking - Criteria tracking dashboard
-- /tasks - Tasks (placeholder)
-- /documents - Documents (placeholder)
-- /reports - Reports (placeholder)
-- /users - Users and Roles (placeholder)
+- **Dashboard (`/`)**
+  - Project timeline
+  - Summary KPI cards
+  - Progress status by perspective
+  - Performance chart
+  - Compliance score gauge + Audit readiness gauge
+  - Recent activities + Top performers
 
-## Customization
+- **Perspective detail (`/perspectives`)**
+  - Header (category + title + progress ring)
+  - Evidence summary cards
+  - Tabs: Overview / Evidence
+  - Overview grid (left labels + right content)
+  - Evidence table + comments + recent activities (Evidence tab only)
 
-### Colors
-Edit the color scheme in `tailwind.config.js`.
+- **Other routes**
+  - `tracking`, `tasks`, `documents`, `reports`, `users` are currently “coming soon” placeholders to keep navigation stable.
 
-### Fonts
-Inter and Sora are imported in `app/globals.css`.
+## How It’s Built (Engineering Notes)
 
-### Data
-All mock data is in `lib/mockData.js`.
+- **Next.js (Pages Router)** + **Tailwind CSS**
+- **Clean component boundaries**
+  - `components/layout/` – app shell (`Layout`, `Header`, `Sidebar`)
+  - `components/dashboard/` – dashboard widgets (timeline, charts, cards, gauges)
+  - `components/perspectives/` – perspective detail modules (tabs, overview grid, table, comments, panels)
+  - `components/ui/` – small reusable primitives (e.g. tabs, card)
+- **Reusable typography + styling**
+  - typography utilities and shared styles live in `app/globals.css` (`typo-*`, sidebar classes, badges, etc.)
+- **Assets**
+  - icons in `public/icons/`
+  - avatars in `public/avatars/`
+- **Mock data**
+  - `lib/mockData.js` (single source of truth for UI content)
 
-## License
+## Assumptions
 
-This project is for demonstration purposes.
-# tahwultask
+- This is a **UI-focused** implementation with **mock data** (no backend).
+- Desktop-first layout, but it remains usable on smaller screens:
+  - sidebar collapses labels on small widths
+  - grids reflow and long text wraps
+- Icons are treated as static assets in `public/icons/`.
+
+## Deployment
+
+Deployed on **Vercel** from the GitHub repository.
+
+## What I’d Improve With More Time
+
+- Add a real design token system (Tailwind theme variables for all colors/spacing to eliminate remaining one-off hex values).
+- Add a mobile sidebar toggle (hamburger) for better usability on very small screens.
+- Add automated checks:
+  - Playwright smoke tests
+  - basic accessibility pass (keyboard/focus/aria)
+  - optional visual regression snapshots for pixel changes
