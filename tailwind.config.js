@@ -9,16 +9,17 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1e3a5f',
-          dark: '#152943',
-          light: '#2d4f7c',
+          DEFAULT: 'var(--color-primary)',
+          dark: 'var(--color-primary-dark)',
+          light: 'var(--color-primary-light)',
         },
         accent: {
-          teal: '#0891b2',
-          red: '#dc2626',
-          yellow: '#eab308',
-          green: '#16a34a',
-          orange: '#ea580c',
+          teal: 'var(--color-accent-teal)',
+          red: 'var(--color-accent-red)',
+          yellow: 'var(--color-accent-yellow)',
+          green: 'var(--color-accent-green)',
+          orange: 'var(--color-accent-orange)',
+          blue: 'var(--color-accent-blue)',
         },
       },
       fontFamily: {

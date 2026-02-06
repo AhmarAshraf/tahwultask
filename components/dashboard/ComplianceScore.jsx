@@ -4,13 +4,13 @@ export default function ComplianceScore({ percentage }) {
   return (
     <div className="bg-white rounded-xl p-6 card-shadow">
       <h2 className="typo-section-20 mb-4">Overall Compliance Score</h2>
-      <div className="mt-9 flex justify-center">
+      <div className="mt-16 flex justify-center">
         <SemiGauge
           percentage={percentage}
-          color="#DC2626"
+          color="var(--color-accent-red)"
           label="Basic Standards 2025"
           size="lg"
-          trackColor="#F1F4F8"
+          trackColor="var(--color-gauge-track)"
         />
       </div>
     </div>

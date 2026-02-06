@@ -4,7 +4,7 @@ const legendItems = [
   { label: "Not Started", color: "bg-gray-400" },
   { label: "In Progress", color: "bg-orange-500" },
   { label: "Completed", color: "bg-green-500" },
-  { label: "Partially Uploaded", color: "bg-[#1E3A5F]" },
+  { label: "Partially Uploaded", color: "bg-primary" },
   { label: "Fully Uploaded", color: "bg-blue-600" },
   { label: "Delayed", color: "bg-red-500" },
 ];
@@ -12,9 +12,9 @@ const legendItems = [
 export default function ProgressStatusSection({ items }) {
   return (
     <div className="bg-white border border-gray-200 rounded-2xl p-4">
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
         <h2 className="typo-section-18">Progress Status</h2>
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
           {legendItems.map((item) => (
             <div key={item.label} className="flex items-center space-x-2">
               <div className={`w-2.5 h-2.5 ${item.color} rounded-full`}></div>

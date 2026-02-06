@@ -1,16 +1,16 @@
 export default function TopPerformers({ performers }) {
   return (
     <div className="bg-white rounded-xl p-6 card-shadow">
-      <h2 className="typo-section-18 mb-4">Top Performing Perspective Leaders</h2>
+      <h2 className="typo-section-18 ">Top Performing Perspective Leaders</h2>
 
-      <div className="mt-4 space-y-4">
+      <div className="mt-4 mt-10 space-y-4">
         {performers.map((performer, index) => (
           <div
             key={performer.id}
             className="flex items-center justify-between pb-4 border-b border-gray-200 last:border-0"
           >
             <div className="flex items-center gap-4 min-w-0">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-[#E0E8ED] flex-shrink-0">
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-[var(--color-avatar-fallback)] flex-shrink-0">
                 {performer.avatar ? (
                   <img
                     src={performer.avatar}

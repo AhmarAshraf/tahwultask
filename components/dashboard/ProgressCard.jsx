@@ -3,7 +3,7 @@ const statusStyles = {
   'in-progress': 'bg-orange-500 text-white',
   pending: 'bg-red-500 text-white',
   'not-started': 'bg-gray-400 text-white',
-  'partially-uploaded': 'bg-[#1E3A5F] text-white',
+  'partially-uploaded': 'bg-primary text-white',
   'fully-uploaded': 'bg-blue-600 text-white',
   delayed: 'bg-red-500 text-white'
 };
@@ -40,7 +40,7 @@ export default function ProgressCard({ item }) {
       {/* Header pill */}
       <div className="bg-primary rounded-lg px-3 py-3 text-white text-center shadow-sm">
         <p className="typo-progress-title-12 text-white">{item.name}</p>
-        <div className="mt-2 inline-flex items-center justify-center rounded-full bg-[#2B4064] px-3 py-1">
+        <div className="mt-2 inline-flex items-center justify-center rounded-full bg-[var(--color-pill-dark)] px-3 py-1">
           <span className="typo-progress-percent-12 text-white">{formatPercent(item.progress)}</span>
         </div>
       </div>
@@ -48,7 +48,7 @@ export default function ProgressCard({ item }) {
       {/* Sub sections */}
       <div className="mt-3 space-y-3">
         {item.subItems.map((subItem, index) => (
-          <div key={index} className="bg-[#F7FAFC] border border-[#E4EAF2] rounded-lg px-3 py-2">
+          <div key={index} className="bg-[var(--color-surface-soft)] border border-[var(--color-border-soft)] rounded-lg px-3 py-2">
             <p className="typo-progress-subtitle-10 mb-2">
               {subItem.name}
             </p>

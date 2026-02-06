@@ -6,7 +6,7 @@ export default function SemiGauge({
   size = 'md',
   valueClassName = '',
   labelClassName = '',
-  trackColor = '#F3F6FA',
+  trackColor = 'var(--color-gauge-track-2)',
   strokeWidth
 }) {
   const safePercent = Math.max(0, Math.min(100, percentage));

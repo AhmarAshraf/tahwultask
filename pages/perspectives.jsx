@@ -49,7 +49,7 @@ export default function Perspectives() {
                     cx="48"
                     cy="48"
                     r="40"
-                    stroke="#e2e8f0"
+                    stroke="var(--color-border)"
                     strokeWidth="8"
                     fill="none"
                   />
@@ -57,7 +57,7 @@ export default function Perspectives() {
                     cx="48"
                     cy="48"
                     r="40"
-                    stroke="#16a34a"
+                    stroke="var(--color-accent-green)"
                     strokeWidth="8"
                     fill="none"
                     strokeLinecap="round"

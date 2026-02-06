@@ -12,9 +12,31 @@
   --color-accent-red: #dc2626;
   --color-accent-yellow: #eab308;
   --color-accent-green: #16a34a;
+  --color-accent-orange: #ea580c;
+  --color-accent-blue: #0078d7;
   --color-background: #f8fafc;
+  --color-page-bg: #f7f9fc;
   --color-surface: #ffffff;
+  --color-surface-soft: #f7fafc;
   --color-border: #e2e8f0;
+  --color-border-soft: #e4eaf2;
+  --color-timeline-track: #f5f8fb;
+  --color-gauge-track: #f1f4f8;
+  --color-gauge-track-2: #f3f6fa;
+  --color-ink: #1d3557;
+  --color-ink-2: #1e2a44;
+  --color-text: #1e293b;
+  --color-text-muted: #7a8699;
+  --color-text-muted-2: #6b7a90;
+  --color-scroll-track: #f1f5f9;
+  --color-scroll-thumb: #cbd5e1;
+  --color-scroll-thumb-hover: #94a3b8;
+  --color-pill-dark: #2b4064;
+  --color-avatar-fallback: #e0e8ed;
+  --color-status-approved-bg: #dffbe7;
+  --color-status-approved-text: #178a44;
+  --color-status-pending-bg: #fffae5;
+  --color-status-pending-text: #ffcc00;
   --sidebar-text: #8fa3bf;
   --sidebar-text-active: #ffffff;
   --sidebar-bg-active: #2d4f7c;
@@ -32,7 +54,7 @@ body {
   overflow-x: hidden;
   font-family: 'Inter var', system-ui, sans-serif;
   background: var(--color-background);
-  color: #1e293b;
+  color: var(--color-text);
 }
 
 a {
@@ -47,16 +69,16 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--color-scroll-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: var(--color-scroll-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: var(--color-scroll-thumb-hover);
 }
 
 /* Smooth transitions */
@@ -87,11 +109,13 @@ a {
 }
 
 .status-approved {
-  @apply bg-[#DFFBE7] text-[#178A44];
+  background-color: var(--color-status-approved-bg);
+  color: var(--color-status-approved-text);
 }
 
 .status-pending {
-  @apply bg-[#FFFAE5] text-[#FFCC00];
+  background-color: var(--color-status-pending-bg);
+  color: var(--color-status-pending-text);
 }
 
 .status-rejected {
@@ -112,10 +136,10 @@ a {
   animation: shimmer 2s infinite;
   background: linear-gradient(
     to right,
-    #f1f5f9 0%,
-    #e2e8f0 20%,
-    #f1f5f9 40%,
-    #f1f5f9 100%
+    var(--color-scroll-track) 0%,
+    var(--color-border) 20%,
+    var(--color-scroll-track) 40%,
+    var(--color-scroll-track) 100%
   );
   background-size: 1000px 100%;
 }
@@ -151,11 +175,13 @@ a {
 }
 
 .typo-gauge-value {
-  @apply text-[44px] font-bold leading-4 text-[#1E2A44] capitalize;
+  @apply text-[44px] font-bold leading-4 capitalize;
+  color: var(--color-ink-2);
 }
 
 .typo-gauge-label {
-  @apply text-[14px] font-normal leading-4 text-[#7A8699] text-center capitalize;
+  @apply text-[14px] font-normal leading-4 text-center capitalize;
+  color: var(--color-text-muted);
 }
 
 .typo-heading-16 {
@@ -163,7 +189,8 @@ a {
 }
 
 .typo-breadcrumb-16 {
-  @apply text-[16px] font-bold leading-4 text-[#1D3557] capitalize;
+  @apply text-[16px] font-bold leading-4 capitalize;
+  color: var(--color-ink);
 }
 
 .typo-date-14 {
@@ -283,15 +310,18 @@ a {
 }
 
 .typo-stat-value-18 {
-  @apply text-[18px] font-semibold leading-none text-gray-900 capitalize;
+  @apply text-[28px] font-bold leading-none capitalize;
+  color: var(--color-ink-2);
 }
 
 .typo-stat-label-12 {
-  @apply text-[12px] font-normal leading-4 text-gray-500 capitalize;
+  @apply text-[14px] font-normal leading-5 capitalize;
+  color: var(--color-text-muted);
 }
 
 .typo-section-20 {
-  @apply text-[20px] font-bold leading-6 text-[#1E2A44] capitalize;
+  @apply text-[20px] font-bold leading-6 capitalize;
+  color: var(--color-ink-2);
 }
 
 .typo-page-title-30 {
@@ -307,7 +337,8 @@ a {
 }
 
 .typo-progress-subtitle-10 {
-  @apply text-[10px] font-normal leading-4 text-[#6B7A90] text-center capitalize;
+  @apply text-[10px] font-normal leading-4 text-center capitalize;
+  color: var(--color-text-muted-2);
 }
 
 .typo-progress-step-12 {
@@ -315,7 +346,8 @@ a {
 }
 
 .typo-avatar-initials-14 {
-  @apply text-[14px] font-medium leading-4 text-[#1E2A44] uppercase;
+  @apply text-[14px] font-medium leading-4 uppercase;
+  color: var(--color-ink-2);
 }
 
 .typo-button-12 {

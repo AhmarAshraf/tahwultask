@@ -27,7 +27,7 @@ export default function Timeline({ data }) {
       <div className="relative">
         {/* Track row */}
         <div className="relative h-12 w-full">
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-[16px] rounded-[10px] bg-[#F5F8FB]"></div>
+          <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-[16px] rounded-[10px] bg-[var(--color-timeline-track)]"></div>
           <div className="absolute top-1/2 -translate-y-1/2 left-0 h-[16px] w-full rounded-[10px]">
             <div
               className="h-full rounded-[6px] bg-green-500"
