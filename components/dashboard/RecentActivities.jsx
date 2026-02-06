@@ -10,7 +10,7 @@ export default function RecentActivities({ activities }) {
             <div className="flex items-start justify-between gap-4">
               <div className="flex items-start gap-3 min-w-0">
                 <span className="mt-2 w-2 h-2 rounded-full bg-red-500 flex-shrink-0"></span>
-                <p className="typo-body-16">{activity.title}</p>
+                <p className="typo-activity-title-16">{activity.title}</p>
               </div>
               <span className="typo-meta-12 whitespace-nowrap">
                 {activity.time}

@@ -151,27 +151,33 @@ a {
 
 /* Typography utilities */
 .typo-title-16 {
-  @apply text-[16px] font-bold leading-4 text-gray-900 capitalize;
+  @apply text-[16px] font-bold leading-4 capitalize;
+  color: var(--color-ink);
 }
 
 .typo-body-16 {
-  @apply text-[16px] font-medium leading-[22px] text-gray-900 capitalize;
+  @apply text-[16px] font-medium leading-[22px] capitalize;
+  color: var(--color-ink);
 }
 
 .typo-meta-12 {
-  @apply text-[12px] font-normal leading-4 text-gray-400 capitalize;
+  @apply text-[12px] font-normal leading-4 capitalize;
+  color: var(--color-text-muted);
 }
 
 .typo-name-16 {
-  @apply text-[16px] font-medium leading-[22px] text-gray-900 capitalize;
+  @apply text-[16px] font-medium leading-[22px] capitalize;
+  color: var(--color-ink);
 }
 
 .typo-desc-16 {
-  @apply text-[16px] font-medium leading-[22px] text-gray-500 capitalize;
+  @apply text-[16px] font-medium leading-[22px] capitalize;
+  color: var(--color-ink);
 }
 
 .typo-score-16 {
-  @apply text-[16px] font-bold leading-[22px] text-gray-900 capitalize;
+  @apply text-[16px] font-bold leading-[22px] capitalize;
+  color: var(--color-ink);
 }
 
 .typo-gauge-value {
@@ -287,6 +293,11 @@ a {
 
 .typo-activity-title-14 {
   @apply text-[14px] font-medium leading-5 text-gray-900 capitalize;
+}
+
+.typo-activity-title-16 {
+  @apply text-[16px] font-medium leading-[22px] capitalize;
+  color: var(--color-ink);
 }
 
 .typo-activity-time-12 {

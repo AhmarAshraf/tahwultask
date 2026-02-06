@@ -15,7 +15,7 @@ export default function RecentActivitiesPanel({ activities }) {
           >
             <div className="w-2 h-2 bg-accent-teal rounded-full mt-2 flex-shrink-0"></div>
             <div className="flex-1">
-              <p className="typo-activity-title-14">{activity.title}</p>
+              <p className="typo-activity-title-16">{activity.title}</p>
               <span className="typo-activity-time-12">{activity.time}</span>
             </div>
           </div>
