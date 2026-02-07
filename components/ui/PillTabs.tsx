@@ -1,17 +1,22 @@
-type TabItem = {
-  id: string;
+type TabItem<T extends string = string> = {
+  id: T;
   label: string;
   disabled?: boolean;
 };
 
-type PillTabsProps = {
-  tabs: TabItem[];
-  activeTab: string;
-  onChange: (id: string) => void;
+type PillTabsProps<T extends string = string> = {
+  tabs: Array<TabItem<T>>;
+  activeTab: T;
+  onChange: (id: T) => void;
   className?: string;
 };
 
-export default function PillTabs({ tabs, activeTab, onChange, className = "" }: PillTabsProps) {
+export default function PillTabs<T extends string>({
+  tabs,
+  activeTab,
+  onChange,
+  className = "",
+}: PillTabsProps<T>) {
   return (
     <div className={`inline-flex rounded-lg bg-gray-100 p-1 ${className}`.trim()}>
       {tabs.map((tab) => {

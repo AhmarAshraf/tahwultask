@@ -7,7 +7,9 @@ const statusStyles = {
   "pending review": "bg-yellow-50 text-yellow-700",
   pending: "bg-gray-100 text-gray-600",
   rejected: "bg-red-50 text-red-600",
-};
+} as const;
+
+type StatusKey = keyof typeof statusStyles;
 
 type StatusPillProps = {
   status: string;
@@ -17,7 +19,8 @@ type StatusPillProps = {
 
 export default function StatusPill({ status, variant, className = "" }: StatusPillProps) {
   const key = (variant || status || "").toLowerCase();
-  const style = statusStyles[key] || "bg-gray-100 text-gray-600";
+  const style =
+    statusStyles[key as StatusKey] || "bg-gray-100 text-gray-600";
   return (
     <span className={`status-badge ${style} ${className}`.trim()}>
       {status}
