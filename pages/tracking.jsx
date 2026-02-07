@@ -1,15 +1,193 @@
+"use client";
+
+import { useState } from "react";
+import { ArrowLeft, Upload, Eye, Download, Trash2 } from "lucide-react";
 import Layout from "../components/layout/Layout";
-import { CheckSquare } from "lucide-react";
+import PillTabs from "../components/ui/PillTabs";
+import RecentActivities from "../components/dashboard/RecentActivities";
+import CommentsPanel from "../components/perspectives/CommentsPanel";
+import { perspectivesData } from "../lib/mockData";
 
 export default function Tracking() {
+  const [activeTab, setActiveTab] = useState("documents");
+  const perspective = perspectivesData[0];
+
+  const evidenceDocuments = [
+    {
+      name: "Digital_Transformation_Plan.Pdf",
+      uploadedBy: "Ahmed Khaled",
+      date: "2025-08-01",
+      status: "Approved",
+    },
+    {
+      name: "KPI_Framework.Xlsx",
+      uploadedBy: "Mona Hamed",
+      date: "2025-08-01",
+      status: "In Review",
+    },
+    {
+      name: "Roadmap_Version1.Docx",
+      uploadedBy: "Rami AlSharif",
+      date: "2025-08-01",
+      status: "Pending",
+    },
+  ];
+
+  const statusClasses = {
+    Approved: "bg-green-50 text-green-700",
+    "In Review": "bg-yellow-50 text-yellow-700",
+    Pending: "bg-gray-100 text-gray-600",
+  };
+
   return (
     <Layout>
-      <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="text-center">
-          <CheckSquare className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Tracking</h2>
-          <p className="text-gray-600">Tracking feature coming soon</p>
+      <div className="space-y-6 animate-fade-in">
+        <div className="flex items-center gap-2 text-gray-600">
+          <ArrowLeft className="w-4 h-4" />
+          <span className="typo-section-18 text-gray-900">Standards Tracking</span>
         </div>
+
+        <div className="bg-white rounded-[10px] border border-gray-200 p-6 card-shadow">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+            <div>
+              <h2 className="typo-title-16">
+                Strategic Planning For Digital Transformation
+              </h2>
+              <p className="typo-desc-14 mt-1">
+                Perspective: {perspective.category}
+              </p>
+            </div>
+            <span className="inline-flex items-center px-4 py-1 rounded-full bg-orange-50 text-orange-600 text-[12px] font-medium">
+              In Progress
+            </span>
+          </div>
+
+          <div className="mt-4">
+            <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-green-500 rounded-full"
+                style={{ width: "97.78%" }}
+              ></div>
+            </div>
+            <div className="mt-2 flex items-center justify-between">
+              <span className="typo-table-meta-12 text-gray-500">Overall Progress</span>
+              <span className="typo-table-meta-12 text-gray-500">97.78%</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <PillTabs
+            tabs={[
+              { id: "documents", label: "Documents" },
+              { id: "details", label: "Details" },
+            ]}
+            activeTab={activeTab}
+            onChange={setActiveTab}
+          />
+          <button className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-primary hover:bg-primary-dark transition-colors typo-table-cell-medium-14 !text-white">
+            <Upload className="w-4 h-4" />
+            Upload New Document
+          </button>
+        </div>
+
+        {activeTab === "documents" && (
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
+            <div className="space-y-6">
+              <div className="bg-white rounded-[10px] border border-gray-200 card-shadow">
+                <div className="px-6 py-4 border-b border-gray-200">
+                  <h3 className="typo-heading-16">Evidence Documents</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead className="bg-gray-50 border-b border-gray-200">
+                      <tr>
+                        {[
+                          "Document Name",
+                          "Uploaded By",
+                          "Date",
+                          "Status",
+                          "Action",
+                        ].map((label, index) => (
+                          <th
+                            key={label}
+                            className={`text-left py-3 px-6 typo-table-head-14 text-gray-700 ${
+                              index === 0 ? "rounded-l-lg" : ""
+                            } ${index === 4 ? "rounded-r-lg" : ""}`}
+                          >
+                            <span className="inline-flex items-center gap-2">
+                              {label}
+                              {label !== "Action" && (
+                                <img
+                                  src="/icons/sort-az.png"
+                                  alt=""
+                                  className="w-3 h-3 opacity-70"
+                                />
+                              )}
+                            </span>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {evidenceDocuments.map((doc, index) => (
+                        <tr
+                          key={`${doc.name}-${index}`}
+                          className="border-b border-gray-100 last:border-0"
+                        >
+                          <td className="py-4 px-6">
+                            <span className="typo-docname-14">{doc.name}</span>
+                          </td>
+                          <td className="py-4 px-6 typo-table-cell-14">
+                            {doc.uploadedBy}
+                          </td>
+                          <td className="py-4 px-6 typo-table-cell-muted-14">
+                            {doc.date}
+                          </td>
+                          <td className="py-4 px-6">
+                            <span
+                              className={`status-badge ${statusClasses[doc.status] || ""}`}
+                            >
+                              {doc.status}
+                            </span>
+                          </td>
+                          <td className="py-4 px-6">
+                            <div className="flex items-center gap-3">
+                              <button className="text-red-500 hover:text-red-600">
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                              <button className="text-blue-600 hover:text-blue-700">
+                                <Download className="w-4 h-4" />
+                              </button>
+                              <button className="text-gray-500 hover:text-gray-700">
+                                <Eye className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <CommentsPanel comments={perspective.comments} showIcon={false} />
+            </div>
+
+            <RecentActivities
+              activities={perspective.recentActivities}
+              className="border border-gray-200 !rounded-[10px]"
+            />
+          </div>
+        )}
+
+        {activeTab === "details" && (
+          <div className="bg-white rounded-xl p-6 border border-gray-200 card-shadow">
+            <p className="typo-desc-14">
+              Details view coming soon.
+            </p>
+          </div>
+        )}
       </div>
     </Layout>
   );

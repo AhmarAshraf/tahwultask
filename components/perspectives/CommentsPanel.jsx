@@ -1,10 +1,10 @@
 import { MessageSquare, Send } from "lucide-react";
 
-export default function CommentsPanel({ comments }) {
+export default function CommentsPanel({ comments, showIcon = true }) {
   return (
     <div className="bg-white min-h-[433px] rounded-xl p-6 card-shadow">
       <h3 className="typo-heading-16 mb-4 flex items-center">
-        <MessageSquare className="w-5 h-5 mr-2" />
+        {showIcon && <MessageSquare className="w-5 h-5 mr-2" />}
         Comments
       </h3>
       <div className="space-y-4">
