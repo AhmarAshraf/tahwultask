@@ -1,11 +1,8 @@
 import { Calendar } from "lucide-react";
-
-const statusStyles = {
-  Completed: "bg-green-100 text-green-800",
-  "In Progress": "bg-yellow-100 text-yellow-800",
-  "Under Review": "bg-blue-100 text-blue-800",
-  Pending: "bg-gray-100 text-gray-800",
-};
+import Table from "../ui/Table";
+import StatusPill from "../ui/StatusPill";
+import EmptyState from "../ui/EmptyState";
+import Skeleton from "../ui/Skeleton";
 
 const progressStyles = {
   high: "bg-green-500",
@@ -19,37 +16,72 @@ const getProgressStyle = (progress) => {
   return progressStyles.low;
 };
 
-export default function TrackingTable({ rows }) {
+export default function TrackingTable({
+  rows,
+  isLoading = false,
+  onRowSelect,
+  selectedId,
+  error = "",
+}) {
+  const hasRows = Array.isArray(rows) && rows.length > 0;
+  const hasError = Boolean(error);
   return (
-    <div className="bg-white rounded-xl card-shadow overflow-hidden">
-      <div className="overflow-x-auto">
-        <table className="w-full">
-          <thead className="bg-gray-50 border-b border-gray-200">
-            <tr>
-              {[
-                "Criterion",
-                "Category",
-                "Progress",
-                "Documents",
-                "Status",
-                "Owner",
-                "Due Date",
-                "Last Updated",
-              ].map((label) => (
-                <th
-                  key={label}
-                  className="text-left py-4 px-6 typo-table-head-14 text-gray-900"
-                >
-                  {label}
-                </th>
+    <Table>
+      <thead className="bg-gray-50 border-b border-gray-200">
+        <tr>
+          {[
+            "Criterion",
+            "Category",
+            "Progress",
+            "Documents",
+            "Status",
+            "Owner",
+            "Due Date",
+            "Last Updated",
+          ].map((label) => (
+            <th
+              key={label}
+              className="text-left py-4 px-6 typo-table-head-14 text-gray-900"
+            >
+              {label}
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {isLoading &&
+          Array.from({ length: 4 }).map((_, rowIndex) => (
+            <tr key={`skeleton-${rowIndex}`} className="border-b border-gray-100 last:border-0">
+              {Array.from({ length: 8 }).map((__, colIndex) => (
+                <td key={`${rowIndex}-${colIndex}`} className="py-4 px-6">
+                  <Skeleton className="h-4 w-full" />
+                </td>
               ))}
             </tr>
-          </thead>
-          <tbody>
-            {rows.map((item) => (
+          ))}
+        {!isLoading && !hasError && hasRows &&
+          rows.map((item) => {
+            const isSelected = selectedId === item.id;
+            return (
               <tr
                 key={item.id}
-                className="border-b border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer"
+                className={`border-b border-gray-100 transition-colors ${
+                  onRowSelect ? "cursor-pointer hover:bg-gray-50" : ""
+                } ${isSelected ? "bg-gray-50" : ""}`}
+                onClick={onRowSelect ? () => onRowSelect(item) : undefined}
+                role={onRowSelect ? "button" : undefined}
+                tabIndex={onRowSelect ? 0 : undefined}
+                aria-selected={onRowSelect ? isSelected : undefined}
+                onKeyDown={
+                  onRowSelect
+                    ? (event) => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          onRowSelect(item);
+                        }
+                      }
+                    : undefined
+                }
               >
                 <td className="py-4 px-6">
                   <span className="typo-table-cell-medium-14 hover:text-accent-teal transition-colors">
@@ -64,8 +96,8 @@ export default function TrackingTable({ rows }) {
                     <div className="flex-1 max-w-[100px]">
                       <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
                         <div
-                          className={`h-full ${getProgressStyle(item.progress)} transition-all duration-300`}
-                          style={{ width: `${item.progress}%` }}
+                          className={`h-full ${getProgressStyle(item.progress)} progress-animate`}
+                          style={{ "--progress": `${item.progress}%` }}
                         ></div>
                       </div>
                     </div>
@@ -83,14 +115,12 @@ export default function TrackingTable({ rows }) {
                   </div>
                 </td>
                 <td className="py-4 px-6">
-                  <span className={`status-badge ${statusStyles[item.status] || statusStyles.Pending}`}>
-                    {item.status}
-                  </span>
+                  <StatusPill status={item.status} />
                 </td>
                 <td className="py-4 px-6">
                   <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 bg-gradient-to-br from-accent-teal to-blue-600 rounded-full flex items-center justify-center">
-                      <span className="typo-initials-12 text-white">
+                    <div className="w-8 h-8 bg-[var(--color-avatar-fallback)] rounded-full flex items-center justify-center">
+                      <span className="typo-initials-12 text-[var(--color-ink-2)]">
                         {item.owner.split(" ").map((n) => n[0]).join("")}
                       </span>
                     </div>
@@ -107,10 +137,29 @@ export default function TrackingTable({ rows }) {
                   <span className="typo-table-meta-12">{item.lastUpdated}</span>
                 </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+            );
+          })}
+        {!isLoading && hasError && (
+          <tr>
+            <td colSpan={8} className="py-10">
+              <EmptyState
+                title="Unable to load tracking data"
+                description={error}
+              />
+            </td>
+          </tr>
+        )}
+        {!isLoading && !hasError && !hasRows && (
+          <tr>
+            <td colSpan={8} className="py-10">
+              <EmptyState
+                title="No tracking data"
+                description="Try changing filters or add new criteria."
+              />
+            </td>
+          </tr>
+        )}
+      </tbody>
+    </Table>
   );
 }

@@ -48,7 +48,8 @@ export default function SemiGauge({
           strokeLinecap="round"
           pathLength="100"
           strokeDasharray="100"
-          strokeDashoffset={100 - safePercent}
+          className="gauge-animate"
+          style={{ "--gauge-offset": `${100 - safePercent}` }}
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">

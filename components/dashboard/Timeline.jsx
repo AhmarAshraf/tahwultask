@@ -4,11 +4,14 @@ export default function Timeline({ data }) {
   const progressPercent = total > 1 ? ((completedCount - 1) / (total - 1)) * 100 : 0;
 
   return (
-    <div className="bg-white rounded-xl p-6 card-shadow">
-      <div className="flex items-center justify-between mb-8">
+    <div className="card-base p-6 card-shadow transition-shadow hover:card-shadow-hover">
+      <div className="flex items-center justify-between mb-6">
         <h3 className="typo-heading-16">Project Timeline</h3>
         <div className="relative">
-        <select className="typo-table-cell-14 border border-gray-300 rounded-lg pl-4 pr-10 py-2 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 appearance-none">
+        <select
+            aria-label="Select year"
+            className="typo-table-cell-14 border border-gray-300 rounded-lg pl-4 pr-10 py-2 focus-ring appearance-none"
+          >
             <option>2026</option>
             <option>2025</option>
           </select>
@@ -30,8 +33,8 @@ export default function Timeline({ data }) {
           <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-[16px] rounded-[10px] bg-[var(--color-timeline-track)]"></div>
           <div className="absolute top-1/2 -translate-y-1/2 left-0 h-[16px] w-full rounded-[10px]">
             <div
-              className="h-full rounded-[6px] bg-green-500"
-              style={{ width: `${Math.max(0, progressPercent)}%` }}
+              className="h-full rounded-[6px] bg-green-500 progress-animate"
+              style={{ '--progress': `${Math.max(0, progressPercent)}%` }}
             ></div>
           </div>
 

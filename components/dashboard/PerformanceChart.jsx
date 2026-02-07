@@ -1,9 +1,21 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Card from '../ui/Card';
 
+function CustomTooltip({ active, payload, label }) {
+  if (!active || !payload?.length) return null;
+  return (
+    <div className="card-base card-shadow px-3 py-2">
+      <p className="text-[12px] font-semibold text-gray-900">{label}</p>
+      <p className="text-[12px] text-gray-600 mt-1">
+        {payload[0].value} points
+      </p>
+    </div>
+  );
+}
+
 export default function PerformanceChart({ data }) {
   return (
-    <Card className="p-6 h-full flex flex-col">
+    <Card className="p-6 h-full flex flex-col transition-shadow hover:card-shadow-hover">
       <h2 className="typo-section-18 mb-6">12-Month Performance</h2>
       <div className="flex-1 min-h-[260px]">
         <ResponsiveContainer width="100%" height="100%">
@@ -27,14 +39,7 @@ export default function PerformanceChart({ data }) {
               tickLine={false}
               axisLine={false}
             />
-            <Tooltip 
-              contentStyle={{
-                backgroundColor: 'var(--color-surface)',
-                border: '1px solid var(--color-border)',
-                borderRadius: '8px',
-                boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-              }}
-            />
+            <Tooltip content={<CustomTooltip />} />
             <Bar 
               dataKey="value" 
               fill="url(#barGradient)" 

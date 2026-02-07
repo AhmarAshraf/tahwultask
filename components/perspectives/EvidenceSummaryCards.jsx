@@ -11,7 +11,10 @@ export default function EvidenceSummaryCards({ perspective }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
       {cards.map((card) => (
-        <div key={card.key} className="bg-white rounded-xl p-4 border border-gray-200">
+        <div
+          key={card.key}
+          className="card-base p-4 card-shadow transition-shadow hover:card-shadow-hover"
+        >
           <div className="flex items-center gap-3">
             <card.Icon className="w-6 h-6 text-red-500" />
             <div className="flex flex-col">

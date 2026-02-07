@@ -1,6 +1,6 @@
 export default function Card({ children, className = "" }) {
   return (
-    <div className={`bg-white rounded-xl card-shadow ${className}`.trim()}>
+    <div className={`card-base card-shadow transition-shadow hover:card-shadow-hover ${className}`.trim()}>
       {children}
     </div>
   );

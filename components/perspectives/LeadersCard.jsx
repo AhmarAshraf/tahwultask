@@ -1,12 +1,12 @@
 export default function LeadersCard({ leaders }) {
   return (
-    <div className="bg-white rounded-lg px-4 py-3 shadow-sm">
+    <div className="card-base p-4 card-shadow transition-shadow hover:card-shadow-hover">
       <h3 className="typo-overview-title-15 mb-4">Leaders</h3>
       <div className="flex flex-wrap gap-4">
         {leaders.map((leader, index) => (
           <div
             key={index}
-            className="flex items-center space-x-3 bg-gray-50 rounded-lg px-4 py-3 shadow-sm"
+            className="flex items-center space-x-3 bg-gray-50 rounded-lg p-3 shadow-sm"
           >
             {leader.avatar ? (
               <img

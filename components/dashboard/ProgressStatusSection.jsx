@@ -11,7 +11,7 @@ const legendItems = [
 
 export default function ProgressStatusSection({ items }) {
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-4">
+    <div className="card-base p-4 card-shadow">
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-4">
         <h2 className="typo-section-18">Progress Status</h2>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">

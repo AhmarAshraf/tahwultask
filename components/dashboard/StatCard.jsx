@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function StatCard({ title, value, icon }) {
   return (
-    <div className="bg-[var(--color-surface)] border border-[var(--color-border)] rounded-xl px-5 py-4 min-h-[92px] card-shadow">
+    <div className="card-base px-6 py-4 min-h-[92px] card-shadow transition-shadow hover:card-shadow-hover">
       <div className="flex items-start justify-between">
         <div className="flex-1">
           <p className="typo-stat-value-18">{value}</p>

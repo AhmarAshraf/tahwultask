@@ -12,7 +12,8 @@ export default function Header() {
             <input
               type="text"
               placeholder="Search"
-              className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent-teal focus:border-transparent transition-all"
+              aria-label="Search"
+              className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus-ring transition-all"
             />
           </div>
         </div>
@@ -20,7 +21,11 @@ export default function Header() {
         {/* Right section */}
         <div className="flex items-center space-x-4">
           {/* Notifications */}
-          <button className="relative p-2 rounded-lg transition-colors hover:bg-gray-100">
+          <button
+            className="relative p-2 rounded-lg transition-colors hover:bg-gray-100 focus-ring disabled:opacity-60 disabled:cursor-not-allowed"
+            aria-label="Notifications"
+            type="button"
+          >
             <Image
               src="/icons/bell.png"
               alt="Notifications"

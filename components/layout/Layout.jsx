@@ -1,6 +1,5 @@
 import Sidebar from './Sidebar';
 import Header from './Header';
-
 export default function Layout({ children }) {
   return (
     <div className="min-h-screen bg-[var(--color-page-bg)]">

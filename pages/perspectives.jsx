@@ -10,6 +10,7 @@ import CommentsPanel from "../components/perspectives/CommentsPanel";
 import RecentActivitiesPanel from "../components/perspectives/RecentActivitiesPanel";
 import LeadersCard from "../components/perspectives/LeadersCard";
 import PillTabs from "../components/ui/PillTabs";
+import Chip from "../components/ui/Chip";
 import { perspectivesData } from "../lib/mockData";
 
 export default function Perspectives() {
@@ -33,12 +34,10 @@ export default function Perspectives() {
         </div>
 
         {/* Header */}
-        <div className="bg-white rounded-xl p-6 card-shadow">
+        <div className="card-base p-6 card-shadow">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <div className="inline-flex items-center px-3 py-1 rounded-full border border-gray-200 bg-white typo-chip-12 mb-3">
-                {perspective.category}
-              </div>
+              <Chip className="mb-3">{perspective.category}</Chip>
               <h1 className="typo-title-16 mb-2">{perspective.name}</h1>
               <p className="typo-desc-14">{perspective.description}</p>
             </div>
@@ -61,8 +60,10 @@ export default function Perspectives() {
                     strokeWidth="8"
                     fill="none"
                     strokeLinecap="round"
-                    strokeDasharray={251.2}
-                    strokeDashoffset={0}
+                    pathLength="100"
+                    strokeDasharray="100"
+                    className="gauge-animate"
+                    style={{ "--gauge-offset": `${100 - perspective.progress}` }}
                   />
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -88,7 +89,7 @@ export default function Perspectives() {
         </div>
 
         {/* Tab Content */}
-        <div className="bg-white rounded-xl card-shadow p-6">
+        <div className="card-base card-shadow p-6">
           {activeTab === "overview" && (
             <div className="space-y-6">
               <OverviewTab perspective={perspective} />

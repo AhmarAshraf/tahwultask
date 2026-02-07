@@ -2,9 +2,9 @@ import SemiGauge from './SemiGauge';
 
 export default function ComplianceScore({ percentage }) {
   return (
-    <div className="bg-white rounded-xl p-6 card-shadow">
+    <div className="card-base p-6 card-shadow transition-shadow hover:card-shadow-hover">
       <h2 className="typo-section-20 mb-4">Overall Compliance Score</h2>
-      <div className="mt-16 flex justify-center">
+      <div className="mt-20 mb-4 flex justify-center">
         <SemiGauge
           percentage={percentage}
           color="var(--color-accent-red)"

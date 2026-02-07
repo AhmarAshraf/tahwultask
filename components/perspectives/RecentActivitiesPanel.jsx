@@ -2,7 +2,7 @@ import { Clock } from "lucide-react";
 
 export default function RecentActivitiesPanel({ activities }) {
   return (
-    <div className="bg-white w-full min-h-[294px] rounded-[10px] border border-gray-200 p-6 card-shadow">
+    <div className="card-base w-full min-h-[294px] p-6 card-shadow transition-shadow hover:card-shadow-hover">
       <h3 className="typo-heading-16 mb-3 flex items-center">
         <Clock className="w-5 h-5 mr-2" />
         Recent Activities
@@ -12,7 +12,7 @@ export default function RecentActivitiesPanel({ activities }) {
         {activities.map((activity, index) => (
           <div
             key={index}
-            className="flex items-start space-x-2 py-3"
+            className="flex items-start space-x-2 py-3 hover:bg-gray-50 transition-colors"
           >
             <div className="w-2 h-2 rounded-full bg-red-500 mt-2 flex-shrink-0"></div>
             <div className="flex-1">

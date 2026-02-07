@@ -21,7 +21,7 @@ export default function TrackingSummaryCards({ metrics }) {
         return (
           <Card
             key={index}
-            className="p-5 hover:card-shadow-hover transition-all duration-300"
+            className="p-6 hover:card-shadow-hover transition-all duration-300"
           >
             <div className="flex items-center justify-between">
               <div>

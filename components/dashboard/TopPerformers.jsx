@@ -1,9 +1,9 @@
 export default function TopPerformers({ performers }) {
   return (
-    <div className="bg-white rounded-xl p-6 card-shadow">
+    <div className="card-base p-6 card-shadow transition-shadow hover:card-shadow-hover">
       <h2 className="typo-section-18 ">Top Performing Perspective Leaders</h2>
 
-      <div className="mt-4 mt-10 space-y-4">
+      <div className="mt-6 space-y-4">
         {performers.map((performer, index) => (
           <div
             key={performer.id}

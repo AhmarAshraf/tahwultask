@@ -32,14 +32,14 @@ export default function Sidebar() {
       <nav className="flex-1 px-2 sm:px-3 py-6 space-y-1">
         {menuItems.map((item) => {
           const isActive = pathname === item.href;
-          
           return (
             <Link
               key={item.href}
               href={item.href}
+              aria-current={isActive ? "page" : undefined}
               className={`
                 flex items-center justify-center sm:justify-start gap-0 sm:gap-3 px-3 sm:px-4 py-3 rounded-lg
-                transition-all duration-200 group
+                transition-all duration-200 group focus-ring
                 ${isActive 
                   ? 'sidebar-link-active sidebar-link-bg shadow-lg' 
                   : 'sidebar-link hover:bg-primary-light hover:text-white'

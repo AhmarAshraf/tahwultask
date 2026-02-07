@@ -1,16 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowLeft, Upload, Eye, Download, Trash2 } from "lucide-react";
 import Layout from "../components/layout/Layout";
 import PillTabs from "../components/ui/PillTabs";
 import RecentActivities from "../components/dashboard/RecentActivities";
 import CommentsPanel from "../components/perspectives/CommentsPanel";
-import { perspectivesData } from "../lib/mockData";
+import Button from "../components/ui/Button";
+import StatusPill from "../components/ui/StatusPill";
+import { useToast } from "../components/ui/Toast";
+import TrackingFilters from "../components/tracking/TrackingFilters";
+import TrackingTable from "../components/tracking/TrackingTable";
+import {
+  perspectivesData,
+  trackingData,
+} from "../lib/mockData";
 
 export default function Tracking() {
   const [activeTab, setActiveTab] = useState("documents");
   const perspective = perspectivesData[0];
+  const { pushToast } = useToast();
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedRow, setSelectedRow] = useState(trackingData[0]);
+
+  const filteredRows = useMemo(() => {
+    const query = searchQuery.trim().toLowerCase();
+    const filteredByStatus = trackingData.filter((row) => {
+      if (selectedFilter === "completed") return row.status === "Completed";
+      if (selectedFilter === "in-progress") return row.status === "In Progress";
+      return true;
+    });
+    if (!query) return filteredByStatus;
+    return filteredByStatus.filter((row) =>
+      `${row.criterion} ${row.category}`.toLowerCase().includes(query)
+    );
+  }, [searchQuery, selectedFilter]);
 
   const evidenceDocuments = [
     {
@@ -33,12 +58,6 @@ export default function Tracking() {
     },
   ];
 
-  const statusClasses = {
-    Approved: "bg-green-50 text-green-700",
-    "In Review": "bg-yellow-50 text-yellow-700",
-    Pending: "bg-gray-100 text-gray-600",
-  };
-
   return (
     <Layout>
       <div className="space-y-6 animate-fade-in">
@@ -47,7 +66,7 @@ export default function Tracking() {
           <span className="typo-section-18 text-gray-900">Standards Tracking</span>
         </div>
 
-        <div className="bg-white rounded-[10px] border border-gray-200 p-6 card-shadow">
+        <div className="card-base p-6 card-shadow">
           <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div>
               <h2 className="typo-title-16">
@@ -65,8 +84,8 @@ export default function Tracking() {
           <div className="mt-4">
             <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
               <div
-                className="h-full bg-green-500 rounded-full"
-                style={{ width: "97.78%" }}
+                className="h-full bg-green-500 rounded-full progress-animate"
+                style={{ "--progress": "97.78%" }}
               ></div>
             </div>
             <div className="mt-2 flex items-center justify-between">
@@ -85,16 +104,25 @@ export default function Tracking() {
             activeTab={activeTab}
             onChange={setActiveTab}
           />
-          <button className="inline-flex items-center gap-2 px-5 py-2 rounded-lg bg-primary hover:bg-primary-dark transition-colors typo-table-cell-medium-14 !text-white">
+          <Button
+            variant="primary"
+            size="md"
+            onClick={() =>
+              pushToast({
+                title: "Upload started",
+                description: "Your document is being uploaded.",
+              })
+            }
+          >
             <Upload className="w-4 h-4" />
             Upload New Document
-          </button>
+          </Button>
         </div>
 
         {activeTab === "documents" && (
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
             <div className="space-y-6">
-              <div className="bg-white rounded-[10px] border border-gray-200 card-shadow">
+              <div className="card-base card-shadow">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <h3 className="typo-heading-16">Evidence Documents</h3>
                 </div>
@@ -145,21 +173,29 @@ export default function Tracking() {
                             {doc.date}
                           </td>
                           <td className="py-4 px-6">
-                            <span
-                              className={`status-badge ${statusClasses[doc.status] || ""}`}
-                            >
-                              {doc.status}
-                            </span>
+                            <StatusPill status={doc.status} />
                           </td>
                           <td className="py-4 px-6">
                             <div className="flex items-center gap-3">
-                              <button className="text-red-500 hover:text-red-600">
+                              <button
+                                className="text-red-500 hover:text-red-600 focus-ring rounded"
+                                aria-label={`Delete ${doc.name}`}
+                                type="button"
+                              >
                                 <Trash2 className="w-4 h-4" />
                               </button>
-                              <button className="text-blue-600 hover:text-blue-700">
+                              <button
+                                className="text-blue-600 hover:text-blue-700 focus-ring rounded"
+                                aria-label={`Download ${doc.name}`}
+                                type="button"
+                              >
                                 <Download className="w-4 h-4" />
                               </button>
-                              <button className="text-gray-500 hover:text-gray-700">
+                              <button
+                                className="text-gray-500 hover:text-gray-700 focus-ring rounded"
+                                aria-label={`View ${doc.name}`}
+                                type="button"
+                              >
                                 <Eye className="w-4 h-4" />
                               </button>
                             </div>
@@ -176,16 +212,60 @@ export default function Tracking() {
 
             <RecentActivities
               activities={perspective.recentActivities}
-              className="border border-gray-200 !rounded-[10px]"
+              variant="compact"
             />
           </div>
         )}
 
         {activeTab === "details" && (
-          <div className="bg-white rounded-xl p-6 border border-gray-200 card-shadow">
-            <p className="typo-desc-14">
-              Details view coming soon.
-            </p>
+          <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
+            <div className="space-y-4">
+              <TrackingFilters
+                selectedFilter={selectedFilter}
+                onFilterChange={setSelectedFilter}
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+              />
+              <TrackingTable
+                rows={filteredRows}
+                onRowSelect={setSelectedRow}
+                selectedId={selectedRow?.id}
+              />
+            </div>
+            <div className="card-base p-6 card-shadow h-fit">
+              <h3 className="typo-heading-16 mb-4">Criterion Details</h3>
+              {selectedRow ? (
+                <div className="space-y-4">
+                  <div>
+                    <p className="typo-table-cell-medium-14">Criterion</p>
+                    <p className="typo-desc-14 mt-1">{selectedRow.criterion}</p>
+                  </div>
+                  <div>
+                    <p className="typo-table-cell-medium-14">Category</p>
+                    <p className="typo-desc-14 mt-1">{selectedRow.category}</p>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p className="typo-table-cell-medium-14">Status</p>
+                    <StatusPill status={selectedRow.status} />
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p className="typo-table-cell-medium-14">Owner</p>
+                    <span className="typo-table-cell-14">{selectedRow.owner}</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <p className="typo-table-cell-medium-14">Due Date</p>
+                    <span className="typo-table-cell-muted-14">{selectedRow.dueDate}</span>
+                  </div>
+                  <div className="pt-2 border-t border-gray-200">
+                    <p className="typo-table-meta-12 text-gray-500">
+                      Last updated {selectedRow.lastUpdated}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <p className="typo-desc-14">Select a row to see details.</p>
+              )}
+            </div>
           </div>
         )}
       </div>

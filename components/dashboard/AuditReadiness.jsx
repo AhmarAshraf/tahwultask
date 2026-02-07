@@ -5,7 +5,7 @@ export default function AuditReadiness({ data }) {
   const { percentage, overdueSids, missingEvidence } = data;
 
   return (
-    <Card className="p-6 h-full flex flex-col">
+    <Card className="p-6 h-full flex flex-col transition-shadow hover:card-shadow-hover">
       <h2 className="typo-section-18 mb-4">Audit Readiness</h2>
 
       <div className="flex flex-col items-center flex-1">
@@ -17,9 +17,9 @@ export default function AuditReadiness({ data }) {
           />
         </div>
 
-        <div className="w-full border-t border-[var(--color-border)] mt-5"></div>
+        <div className="w-full border-t border-[var(--color-border)] mt-4"></div>
 
-        <div className="grid grid-cols-2 gap-6 w-full mt-5">
+        <div className="grid grid-cols-2 gap-6 w-full mt-4">
           <div className="text-center">
             <p className="text-2xl font-bold text-gray-900">{overdueSids}</p>
             <p className="typo-gauge-label mt-1">

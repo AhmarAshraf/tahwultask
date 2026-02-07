@@ -36,7 +36,7 @@ export default function ProgressCard({ item }) {
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-xl p-3">
+    <div className="card-base p-3">
       {/* Header pill */}
       <div className="bg-primary rounded-lg px-3 py-3 text-white text-center shadow-sm">
         <p className="typo-progress-title-12 text-white">{item.name}</p>

@@ -27,7 +27,7 @@ const alertStyles = {
 export default function TrackingSidePanels({ team, deadlines, alerts }) {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div className="bg-white rounded-xl p-6 card-shadow">
+      <div className="card-base p-6 card-shadow transition-shadow hover:card-shadow-hover">
         <h3 className="typo-heading-16 mb-4 flex items-center">
           <Users className="w-5 h-5 mr-2 text-accent-teal" />
           Team Overview
@@ -36,8 +36,8 @@ export default function TrackingSidePanels({ team, deadlines, alerts }) {
           {team.map((member, index) => (
             <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-accent-teal to-blue-600 rounded-full flex items-center justify-center">
-                  <span className="typo-initials-14 text-white">
+                <div className="w-10 h-10 bg-[var(--color-avatar-fallback)] rounded-full flex items-center justify-center">
+                  <span className="typo-initials-14 text-[var(--color-ink-2)]">
                     {member.initials}
                   </span>
                 </div>
@@ -54,7 +54,7 @@ export default function TrackingSidePanels({ team, deadlines, alerts }) {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl p-6 card-shadow">
+      <div className="card-base p-6 card-shadow transition-shadow hover:card-shadow-hover">
         <h3 className="typo-heading-16 mb-4 flex items-center">
           <Calendar className="w-5 h-5 mr-2 text-orange-500" />
           Upcoming Deadlines
@@ -76,7 +76,7 @@ export default function TrackingSidePanels({ team, deadlines, alerts }) {
         </div>
       </div>
 
-      <div className="bg-white rounded-xl p-6 card-shadow">
+      <div className="card-base p-6 card-shadow transition-shadow hover:card-shadow-hover">
         <h3 className="typo-heading-16 mb-4 flex items-center">
           <TrendingUp className="w-5 h-5 mr-2 text-red-500" />
           Risk Alerts
