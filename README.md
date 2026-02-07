@@ -41,7 +41,7 @@ npm start
 
 ## How It’s Built (Engineering Notes)
 
-- **Next.js (Pages Router)** + **Tailwind CSS**
+- **Next.js (Pages Router)** + **TypeScript** + **Tailwind CSS**
 - **Clean component boundaries**
   - `components/layout/` – app shell (`Layout`, `Header`, `Sidebar`)
   - `components/dashboard/` – dashboard widgets (timeline, charts, cards, gauges)
@@ -75,4 +75,4 @@ Deployed on **Vercel** from the GitHub repository.
   - Playwright smoke tests
   - basic accessibility pass (keyboard/focus/aria)
   - optional visual regression snapshots for pixel changes
-- Add TypeScript for future type checking and safer refactors.
+- Expand TypeScript coverage and add stricter type checks.
