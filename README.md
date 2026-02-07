@@ -75,3 +75,4 @@ Deployed on **Vercel** from the GitHub repository.
   - Playwright smoke tests
   - basic accessibility pass (keyboard/focus/aria)
   - optional visual regression snapshots for pixel changes
+- Add TypeScript for future type checking and safer refactors.
