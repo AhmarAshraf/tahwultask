@@ -28,12 +28,12 @@ type EvidenceTableProps = {
 };
 
 type SortConfig = {
-  key: keyof EvidenceRow | "";
+  key: keyof EvidenceRow | null;
   direction: "asc" | "desc";
 };
 
 export default function EvidenceTable({ rows, isLoading = false, error = "" }: EvidenceTableProps) {
-  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: "", direction: "asc" });
+  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: "asc" });
 
   const handleSort = (key: keyof EvidenceRow) => {
     setSortConfig((prev) => {
@@ -49,12 +49,13 @@ export default function EvidenceTable({ rows, isLoading = false, error = "" }: E
 
   const sortedRows = useMemo(() => {
     if (!sortConfig.key) return rows;
+    const sortKey = sortConfig.key;
     const column = columns.find((col) => col.key === sortConfig.key);
     const dir = sortConfig.direction === "asc" ? 1 : -1;
     const copy = [...rows];
     copy.sort((a, b) => {
-      const aVal = a[sortConfig.key];
-      const bVal = b[sortConfig.key];
+      const aVal = a[sortKey];
+      const bVal = b[sortKey];
       if (column?.type === "date") {
         const aTime = aVal ? new Date(aVal).getTime() : 0;
         const bTime = bVal ? new Date(bVal).getTime() : 0;
