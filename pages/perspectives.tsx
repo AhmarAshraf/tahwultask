@@ -90,17 +90,17 @@ export default function Perspectives() {
         </div>
 
         {/* Tab Content */}
-        <div className="card-base card-shadow p-6">
-          {activeTab === "overview" && (
+        {activeTab === "overview" && (
+          <div className="card-base card-shadow p-6">
             <div className="space-y-6">
               <OverviewTab perspective={perspective} />
             </div>
-          )}
+          </div>
+        )}
 
-          {activeTab === "evidence" && (
-            <EvidenceTable rows={perspective.evidence} />
-          )}
-        </div>
+        {activeTab === "evidence" && (
+          <EvidenceTable rows={perspective.evidence} />
+        )}
 
         {activeTab === "evidence" && (
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

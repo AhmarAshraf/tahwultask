@@ -43,7 +43,7 @@ export default function EvidenceTable({ rows, isLoading = false, error = "" }: E
           direction: prev.direction === "asc" ? "desc" : "asc",
         };
       }
-      return { key, direction: "asc" };
+      return { key, direction: "desc" };
     });
   };
 
@@ -73,20 +73,20 @@ export default function EvidenceTable({ rows, isLoading = false, error = "" }: E
   const hasError = Boolean(error);
 
   return (
-    <Table>
+    <Table className="py-[14px] px-[17px]">
       <thead className="bg-gray-50">
         <tr>
           {columns.map((col, index) => (
             <th
               key={col.key}
-              className={`text-left py-3 px-4 typo-table-head-14 ${
+              className={`text-left py-[14px] px-[17px] typo-table-head-14 bg-gray-50 ${
                 index === 0 ? "rounded-l-lg" : ""
               } ${index === columns.length - 1 ? "rounded-r-lg" : ""}`}
             >
               <button
                 type="button"
                 onClick={() => handleSort(col.key)}
-                className="flex items-center gap-2 select-none focus-ring rounded disabled:opacity-60 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 select-none focus-ring rounded w-full disabled:opacity-60 disabled:cursor-not-allowed"
                 aria-label={`Sort by ${col.label}`}
                 aria-sort={
                   sortConfig.key === col.key
@@ -127,25 +127,25 @@ export default function EvidenceTable({ rows, isLoading = false, error = "" }: E
         {!isLoading && !hasError && hasRows &&
           sortedRows.map((doc, index) => (
             <tr key={index} className="border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors">
-              <td className="py-4 px-4 typo-table-cell-14">
+              <td className="py-[14px] px-[17px] typo-table-cell-14">
                 {doc.docNumber}
               </td>
-              <td className="py-4 px-4">
+              <td className="py-[14px] px-[17px]">
                 <span className="typo-docname-14">{doc.name}</span>
               </td>
-              <td className="py-4 px-4 typo-table-cell-14">
+              <td className="py-[14px] px-[17px] typo-table-cell-14">
                 {doc.lead}
               </td>
-              <td className="py-4 px-4 typo-table-cell-14">
+              <td className="py-[14px] px-[17px] typo-table-cell-14">
                 {doc.preparer}
               </td>
-              <td className="py-4 px-4 typo-table-cell-muted-14">
+              <td className="py-[14px] px-[17px] typo-table-cell-muted-14">
                 {doc.date}
               </td>
-              <td className="py-4 px-4 typo-table-cell-muted-14">
+              <td className="py-[14px] px-[17px] typo-table-cell-muted-14">
                 {doc.dueDate}
               </td>
-              <td className="py-4 px-4">
+              <td className="py-[14px] px-[17px]">
                 <StatusPill status={doc.status} />
               </td>
             </tr>

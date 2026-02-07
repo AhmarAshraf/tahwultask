@@ -23,11 +23,11 @@ type PerformanceChartProps = {
 
 export default function PerformanceChart({ data }: PerformanceChartProps) {
   return (
-    <Card className="p-6 h-full flex flex-col transition-shadow hover:card-shadow-hover">
-      <h2 className="typo-section-18 mb-6">12-Month Performance</h2>
-      <div className="flex-1 min-h-[260px]">
+    <Card className="p-6  h-full flex flex-col transition-shadow hover:card-shadow-hover">
+      <h2 className="typo-section-18  mb-6">12-Month Performance</h2>
+      <div className="flex-1 min-h-[260px]  pb-2 pt-1">
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data}>
+          <BarChart data={data} margin={{ top: 8, right: 16, left: -18, bottom: 8 }}>
             <defs>
               <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="var(--color-accent-blue)" stopOpacity={1} />
@@ -40,12 +40,14 @@ export default function PerformanceChart({ data }: PerformanceChartProps) {
               stroke="var(--color-text-muted)"
               fontSize={12}
               tickLine={false}
+              tickMargin={8}
             />
             <YAxis 
               stroke="var(--color-text-muted)"
               fontSize={12}
               tickLine={false}
               axisLine={false}
+              tickMargin={8}
             />
             <Tooltip content={<CustomTooltip />} />
             <Bar 
