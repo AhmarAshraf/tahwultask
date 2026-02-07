@@ -1,7 +1,7 @@
 import { Search, Filter, Download } from "lucide-react";
 import Button from "../ui/Button";
 
-const filterButtons = [
+const filterButtons: Array<{ id: FilterId; label: string }> = [
   { id: "all", label: "All" },
   { id: "completed", label: "Completed" },
   { id: "in-progress", label: "In Progress" },
