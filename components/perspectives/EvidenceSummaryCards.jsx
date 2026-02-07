@@ -16,7 +16,7 @@ export default function EvidenceSummaryCards({ perspective }) {
             <card.Icon className="w-6 h-6 text-red-500" />
             <div className="flex flex-col">
               <p className="typo-summary-value-20">{perspective[card.key]}</p>
-              <p className="typo-summary-label-14">{card.label}</p>
+              <p className="typo-summary-label-14 mt-1">{card.label}</p>
             </div>
           </div>
         </div>
